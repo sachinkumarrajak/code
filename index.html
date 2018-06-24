@@ -1,0 +1,650 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Programing in C and Java</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body data-spy="scroll" data-target="#sidebar-menu">
+    <header class="nav-scope navbar  navbar-default navbar-static-top hidden-lg hidden-md hidden-sm " role="banner" style="background-color: #337AB7;">
+        <p style="color:white;font-size:30px; text-align:center"><b class="glyphicon glyphicon-education"> Programing in C and Java </b> </p>
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button class="navbar-toggle text-primary" type="button" data-toggle="collapse" data-target=".navbar-collapse" style="background-color:white;">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+            </div>
+
+            <nav class="collapse navbar-collapse" role="navigation" style="background-color:white;" >
+                <ul class="nav navbar-nav hidden-md hidden-sm ">
+                    <li><a href="#k">Palindrome</a></li>
+                    <li><a href="#f">Factorial Number</a></li>
+                    <li><a href="#fib">Fibonacci series</a></li>
+                    <li><a href="#bu">Bubble Sort</a></li>
+                    <li><a href="#th">Third highest Element</a></li>
+
+                  
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <nav class="navbar  hidden-xs  " style="background-color: #337AB7; color:white;font-size:30px; text-align:center">
+        <p class="text-white"><b class="glyphicon glyphicon-education"> Programing in C and Java </b> </p>
+      
+    </nav>
+    <div class="container">
+
+        <div class="row">
+
+          
+            <div class="col-md-3 col-sm-3">
+                <div class="well  hidden-xs" id="sidebar-menu" data-spy="affix" data-offset-top="330">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="#k">Palindrome</a></li>
+                        <li><a href="#f">Factorial Number</a></li>
+                        <li><a href="#fib">Fibonacci series</a></li>
+                        <li><a href="#bu">Bubble Sort</a></li>
+                        <li><a href="#th">Third highest Element</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+            <!--palindrom start-->
+            <div class="col-xs-12 col-lg-8 col-md-8  col-sm-8 well " id="k">
+                <!---->
+                <h1 class="text-primary">Palindrome number <small>both in c and java</small></h1>
+                <p>If a number remains same, even if we reverse its digits then the number is known as palindrome number. For example 12321 is a palindrome number because it remains same if we reverse its digits.</p>
+
+                <div class="panel panel-primary">
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home">C Code</a></li>
+                        <li><a data-toggle="tab" href="#menu1">Java Code</a></li>
+                       
+                    </ul>
+
+                    <div class="tab-content bg-primary">
+                        <div id="home" class="tab-pane fade in active">
+                            <h3 class="bg-primary text-white">Program  for palindrom no in C</h3>
+                            <pre class="bg-warning">
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+void  main()
+{
+    int n, m, a = 0,x;
+   clrscr();
+   printf("Enter any number:");
+   scanf("%d",&n);
+ 
+    m = n;
+ 
+    while(n > 0)
+        {
+            x = n % 10;
+            a = a * 10 + x;
+            n = n / 10;
+        }
+        if(a == m)
+	{	printf("yes number is Palindrome");
+        }
+        else
+        {
+	    printf(" number is not palindrome 	" );
+	}
+		getch();
+}
+</pre>
+
+                            <div>
+                                <b class="text-white">OUTPUT</b>
+
+
+
+                            </div>
+                            <img class="img-responsive" src="images/1.png" />
+
+                            
+
+                        </div>
+                        <div id="menu1" class="tab-pane fade  bg-primary">
+                            <h3 class="bg-primary text-white"> Program  for palindrom number in java</h3>
+                            <pre class="bg-warning">
+import java.util.Scanner;
+public class Palindrome
+{
+    public static void main(String args[])
+    {
+        int n, m, a = 0,x;
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter any number:");
+        n = s.nextInt();
+        m = n;
+        while(n > 0)
+        {
+            x = n % 10;
+            a = a * 10 + x;
+            n = n / 10;
+        }
+        if(a == m)
+        {
+            System.out.println("Given number "+m+" is Palindrome");
+        }
+        else
+        {
+            System.out.println("Given number "+m+" is Not Palindrome");
+        }
+    }
+}
+
+</pre>                        
+                            
+                            
+                            <div>
+                                  <b class="text-white">OUTPUT</b>
+
+                                  
+
+                            </div>
+                           
+                             <img  class="img-responsive" src="images/pout.png" />
+                           
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+
+            <!--palindrom end-->
+            
+            <!-- Factorial start-->
+            <div class="col-xs-12 col-lg-8 col-md-8  col-sm-8 well col-lg-offset-3 col-md-offset-3 col-sm-offset-3" id="f">
+                <!--Factorial-->
+
+                <h1 class="text-primary">Factorial Number <small>both in c and java</small></h1>
+                <p>
+                    If n is an integer greater than or equal to 1, then
+
+                    n ! = n ( n - 1)( n - 2)( n - 3) ... (3)(2)(1)
+                </p>
+                <div class="panel panel-primary">
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#he">C Code</a></li>
+                        <li><a data-toggle="tab" href="#me">Java Code</a></li>
+
+                    </ul>
+
+                    <div class="tab-content bg-primary">
+                        <div id="he" class="tab-pane fade in active">
+                            <h3 class="bg-primary text-white"> Program  for Factorial number in C</h3>
+                            <pre class="bg-warning">
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+   void main()    
+{    
+ int i,fact=1,number;   
+ clrscr(); 
+ printf("Enter a number: ");    
+ scanf("%d",&number);    
+    for(i=1;i<=number;i++)
+  {    
+      fact=fact*i;    
+  }    
+  printf("Factorial is: %d",fact);
+ getch(); 
+}   
+</pre>
+
+                            <div>
+                                <b class="text-white">OUTPUT</b>
+
+
+
+                            </div>
+                            <img class="img-responsive" src="images/f.png" />
+
+
+
+                        </div>
+                        <div id="me" class="tab-pane fade  bg-primary">
+                            <h3 class="bg-primary text-white"> Program  for Factorial number in Java</h3>
+                            <pre class="bg-warning">
+import java.util.Scanner;
+class Factorial
+{  
+ public static void main(String args[])
+{
+ 
+  int n, i,fact=1;
+  Scanner s = new Scanner(System.in);
+  System.out.print("Enter any number:");
+  n = s.nextInt();
+ 
+  for(i=1;i<=n;i++){    
+      fact=fact*i;    
+  }    
+  System.out.println("Factorial of "+n+" is: "+fact);    
+ }  
+}  
+</pre>
+
+
+                            <div>
+                                <b class="text-white">OUTPUT</b>
+
+
+
+                            </div>
+
+                            <img class="img-responsive" src="images/fj.png" />
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+          </div>
+
+            <!-- Factorial end-->
+            <!--fabonacci start-->
+
+            <div id="fib"  class="col-xs-12 col-lg-8 col-md-8  col-sm-8 well col-lg-offset-3 col-md-offset-3 col-sm-offset-3" id="f">
+
+
+                <h1 class="text-primary">Fibonacci series <small>both in c and java</small></h1>
+                <p>
+                    In fibonacci series, next number is the sum of previous two numbers for example 0, 1, 1, 2, 3, 5 etc.
+                </p>
+                <div class="panel panel-primary">
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#fibc">C Code</a></li>
+                        <li><a data-toggle="tab" href="#fibj">Java Code</a></li>
+
+                    </ul>
+
+                    <div class="tab-content bg-primary">
+                        <div id="fibc" class="tab-pane fade in active">
+                            <h3 class="bg-primary text-white"> Program  for Fibonacci series in  C</h3>
+                            <pre class="bg-warning">
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+int fac(int n)
+{
+  if(n==1||n==2)
+  return(1);
+  else
+  return(fac(n-1)+fac(n-2));
+}
+void main()
+{
+ int no;
+  clrscr();
+  printf("enter no");
+  scanf("%d",&no);
+  for(int i=1;i<=no;i++)
+  {
+  printf("%d\t",fac(i));
+  }
+ getch();
+}
+</pre>
+
+                            <div>
+                                <b class="text-white">OUTPUT</b>
+
+
+
+                            </div>
+                            <img class="img-responsive" src="images/fibc.png" />
+
+
+
+                        </div>
+                        <div id="fibj" class="tab-pane fade  bg-primary">
+                            <h3 class="bg-primary text-white"> Program  for Fibonacci series in Java</h3>
+                            <pre class="bg-warning">
+import java.util.Scanner;
+class Fibonacci{  
+public static void main(String args[])  
+{    
+ int n1=0,n2=1,n3,i,k;  
+ Scanner s = new Scanner(System.in);
+ System.out.print("Enter a number to genrate Fibonacci series ");
+ k = s.nextInt();  
+ System.out.print(n1+"\n"+n2);   
+    
+ 
+
+   for(i=2;i&lt;k;++i){
+                 n3=n1+n2;
+                 System.out.print("\n"+n3);
+                 n1=n2;
+                 n2=n3;
+               }
+    }
+}
+</pre>
+
+
+                            <div>
+                                <b class="text-white">OUTPUT</b>
+
+
+
+                            </div>
+
+                            <img class="img-responsive" src="images/fibj.png" />
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+           
+            <!--fabonacci end-->
+            
+           
+          
+              
+            </div>
+            <!--bubble start-->
+            <div id="bu" class="col-xs-12 col-lg-8 col-md-8  col-sm-8 well col-lg-offset-3 col-md-offset-3 col-sm-offset-3">
+
+
+                <h1 class="text-primary"> Bubble Sort <small>both in c and java</small></h1>
+                <p>
+                    Bubble Sort is a simple algorithm which is used to sort a given set of n elements provided in form of an array with n number of elements.
+                </p>
+                <div class="panel panel-primary">
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#bsc">C Code</a></li>
+                        <li><a data-toggle="tab" href="#bsj">Java Code</a></li>
+
+                    </ul>
+
+                    <div class="tab-content bg-primary">
+                        <div id="bsc" class="tab-pane fade in active">
+                            <h3 class="bg-primary text-white"> Program  for Bubble Sort in  C</h3>
+                            <pre class="bg-warning">
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+void main()
+{
+int i,a[100],temp,j,n;
+clrscr();
+printf("Enter a number for size of Array ");
+scanf("%d",&n);
+printf("Enter element in Array");
+                              
+for(i=0;i<<code></code>n;i++)
+ {
+   scanf("%d",&a[i]);
+  }
+  for(i=0;i<<code></code>n;i++)
+  
+ {
+  for(j=0;j<<code></code>n-i-1;j++)
+                            
+     {
+      if(a[j]>a[j+1])
+       {
+         temp=a[j];
+         a[j]=a[j+1];
+         a[j+1]=temp;
+        }
+      }
+  }
+printf("After sorting : ");
+                                
+(j=0;j<<code></code>n;j)       
+  {
+   printf("  %d",a[j]);
+  }
+   getch();
+}
+</pre>
+
+                            <div>
+                                <b class="text-white">OUTPUT</b>
+
+
+
+                            </div>
+                            <img class="img-responsive" src="images/bubblec.png" />
+
+
+
+                        </div>
+                        <div id="bsj" class="tab-pane fade  bg-primary">
+                            <h3 class="bg-primary text-white"> Program  for Bubble Sort in Java</h3>
+                            <pre class="bg-warning">
+import java.util.Scanner;
+public class Bubble
+{
+   public static void main(String args[])
+   {
+       int n, i, j, temp;
+       int arr[] = new int[50];
+       Scanner scan = new Scanner(System.in);
+	   
+       System.out.print("Enter Total Number of Elements ");
+       n = scan.nextInt();
+	   
+       System.out.print("Enter " +n+ " Numbers : ");
+       for(i=0; i<<code></code>n; i++)
+                     {
+                     arr[i]=scan.nextInt();
+                     }
+                     for(i=0; i<<code></code>(n-1); i++)
+       {
+           for(j=0; j<<code></code>(n-i-1); j++)
+           {
+               if(arr[j] > arr[j+1])
+               {
+                   temp = arr[j];
+                   arr[j] = arr[j+1];
+                   arr[j+1] = temp;
+               }
+           }
+       }
+       System.out.print("After Sorting: \n");
+       for(i=0; i<<code></code>n; i++)
+       {
+           System.out.print(arr[i]+ "  ");
+       }
+   }
+}
+</pre>
+
+
+                            <div>
+                                <b class="text-white">OUTPUT</b>
+
+
+
+                            </div>
+
+                            <img class="img-responsive" src="images/bubblej.png" />
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+
+            <!--bubble end-->
+
+            <!--3rd highest start -->
+
+            <div id="th" class="col-xs-12 col-lg-8 col-md-8  col-sm-8 well col-lg-offset-3 col-md-offset-3 col-sm-offset-3">
+
+
+                <h1 class="text-primary"> Third Largest element<small> both in c and java</small></h1>
+                <p>
+                    From the give array we have to find the 3rd largest or greatest element .Suppose that  there is an array containing elements are 1,4,86,32,45 in which 45 is the third highest number 
+                </p>
+                <div class="panel panel-primary">
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#thc">C Code</a></li>
+                        <li><a data-toggle="tab" href="#thj">Java Code</a></li>
+
+                    </ul>
+
+                    <div class="tab-content bg-primary">
+                        <div id="thc" class="tab-pane fade in active">
+                            <h3 class="bg-primary text-white"> Program to find Third Largest element in C</h3>
+                            <pre class="bg-warning">
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#include  &lt;limits.h&gt;
+void main()
+{
+    int a[10] = {5,90,33,26,77,8,0,10,1,23};
+    int h1 = INT_MIN;
+    int h2 = INT_MIN;
+    int h3 = INT_MIN;
+    clrscr();
+    for(int i=0;i<<code></code>10;i++)
+    {
+        if(a[i]> h1)
+	{
+	    h3 = h2; h2 = h1; h1 = a[i];
+	}
+	else if (a[i] > h2)
+	{
+	    h3 = h2; h2 = a[i];
+	}
+	else if  (a[i] > h3)
+	{
+	    h3 = a[i];
+	}
+    }
+    printf("  Third Largest element is%d",h3);
+    getch();
+}
+</pre>
+
+                            <div>
+                                <b class="text-white">OUTPUT</b>
+
+
+
+                            </div>
+                            <img class="img-responsive" src="images/3hc.png" />
+
+
+
+                        </div>
+                        <div id="thj" class="tab-pane fade  bg-primary">
+                            <h3 class="bg-primary text-white">Program to find Third Largest element in Java </h3>
+                            <pre class="bg-warning">
+  class Third
+{
+    public static void main(String args[])
+    {
+          int[] arr={14,52,78,45,33,45,56,84,99,65};
+          int max=0,second=0,third=0;
+           for(int i:arr){
+              if(max<<code></code>i) {
+                        third=second;
+                        second=max;
+                        max=i;
+                        }
+                        else if(second < i)
+             {
+                 third = second;
+                 second = i;
+             }
+
+
+             else if(third < i)
+             {
+                 third = i;
+             }
+
+           }
+
+         System.out.println("Third max is" + third);
+
+
+    }
+
+
+}
+</pre>
+
+
+                            <div>
+                                <b class="text-white">OUTPUT</b>
+
+
+
+                            </div>
+
+                            <img class="img-responsive" src="images/3hj.png" />
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <!--3rd highest end -->
+        </div>   
+        
+        </div>
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
