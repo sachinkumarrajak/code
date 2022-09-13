@@ -1,0 +1,215 @@
+<Window x:Class="MVVMPracticle.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+        xmlns:vm="clr-namespace:MVVMPracticle.ViewModel"  
+
+        Title="MainWindow" Height="350" Width="525">
+
+    <Window.Resources>
+        <vm:PersonViewModel x:Key="PersonViewModel"/>       
+        
+    </Window.Resources>
+    <Grid DataContext="{Binding Source={StaticResource PersonViewModel}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="First Name" HorizontalAlignment="Center"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Width="100" HorizontalAlignment="Center" Text="{Binding Person.FName, Mode=TwoWay}"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Last Name" HorizontalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Width="100" HorizontalAlignment="Center" Text="{Binding Person.LName, Mode=TwoWay}"/>
+        <Button Content="Submit" Command="{Binding SubmitCommand }" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
+        <ListView ItemsSource="{Binding Persons}" Width="Auto" Grid.Row="3" Grid.Column="1">
+            <ListView.View >
+                <GridView>
+                    <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FName}" Width="Auto"/>
+                    <GridViewColumn  Header="Last Name" DisplayMemberBinding="{Binding LName}" Width="Auto"/>
+                    <GridViewColumn  Header="Full Name" DisplayMemberBinding="{Binding FullName}" Width="Auto"/>
+                    
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
+ public class Person : INotifyPropertyChanged
+    {
+        private string fName;
+
+        public string FName
+        {
+            get { return fName; }
+            set { fName = value;  OnPropertyChanged(FName); }
+        }
+
+        private string lName;
+
+        public string LName
+        {
+            get { return lName; }
+            set { lName = value;   OnPropertyChanged(LName); }
+        }
+
+        private string fullname;    
+
+        public string FullName
+        {
+            get
+            {
+                return fullname = FName + " " + LName;
+            }
+            set
+            {
+                if (fullname != value)
+                {
+                    fullname = value; OnPropertyChanged(FullName);
+
+                }
+            }
+        }        
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string p)
+        {
+            PropertyChangedEventHandler ph = PropertyChanged;
+            if (ph != null)
+                ph(this, new PropertyChangedEventArgs(p));
+        }
+    }
+
+
+
+
+/////
+public class PersonViewModel : INotifyPropertyChanged
+    {
+
+        private Person _person;
+        public Person Person
+        {
+            get { return _person; }
+            set { _person = value;  NotifyPropertyChanged("Person"); }
+        }     
+
+        private ObservableCollection<Person> _persons;
+        public ObservableCollection<Person> Persons
+        {
+            get
+            {
+                return _persons;
+            }
+            set
+            {
+                _persons = value;
+                NotifyPropertyChanged("Persons");
+            }
+        }
+
+        private ICommand _SubmitCommand;
+        public ICommand SubmitCommand
+        {
+            get
+            {
+                if (_SubmitCommand == null)
+                {
+                    _SubmitCommand = new RelayCommand(SubmitExecute, CanSubmitExecute, false);
+                }
+                return _SubmitCommand;
+            }
+        }
+       
+        public PersonViewModel()
+        {
+            Person = new Person();                       
+            Persons = new ObservableCollection<Person>();
+        }
+
+        
+        private void SubmitExecute(object parameter)
+        {
+           Persons.Add(Person);
+        }
+
+        private bool CanSubmitExecute(object parameter)
+        {
+            if (string.IsNullOrEmpty(Person.FName) || string.IsNullOrEmpty(Person.LName))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
+///
+class RelayCommand : ICommand
+    {
+        Action<object> executeAction;
+        Func<object, bool> canExecute;
+        bool canExecuteCache;
+
+
+        public RelayCommand(Action<object> executeAction, Func<object, bool> canExecute, bool canExecuteCache)
+        {
+            this.canExecute = canExecute;
+            this.executeAction = executeAction;
+            canExecuteCache = canExecuteCache;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            if (canExecute == null)
+            {
+                return true;
+
+            }
+            else
+            {
+                return canExecute(parameter);
+            }
+        }
+
+        public event EventHandler CanExecuteChanged
+        {
+            add
+            {           
+                
+               CommandManager.RequerySuggested += value;
+                
+            }
+            remove
+            {              
+                
+               CommandManager.RequerySuggested -= value;
+                
+            }
+        }
+
+        public void Execute(object parameter)
+        {
+            executeAction(parameter);
+        }
+    }
